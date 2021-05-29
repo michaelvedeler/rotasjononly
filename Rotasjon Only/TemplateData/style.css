@@ -1,0 +1,39 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.canvas {
+  background: #ffffff;
+  width: 100%;
+  height: 100%;
+}
+
+.fullscreen-button {
+  float: right;
+  width: 38px;
+  height: 38px;
+  background: url("/TemplateData/icon-fullscreen.png") no-repeat center;
+}
+
+.loading-indicator {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.loading-indicator__animation {
+  display: block;
+  margin-bottom: 28px;
+}

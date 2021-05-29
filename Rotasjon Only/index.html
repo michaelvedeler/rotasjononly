@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes"/>
+    <title>Rotasjon Only | 3D estate</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+  </head>
+  <body>
+    <div id="container" class="container">
+      <canvas id="canvas" class="canvas"></canvas>
+      <div id="loading-indicator" class="loading-indicator">
+        <img class="loading-indicator__animation" src="TemplateData/koteng-loading-animation.svg">
+        <p>Laster modell ...</p>
+      </div>
+    </div>
+    <script>
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/2134be14efdf267475c7a6bbc4097f7c.js";
+      var config = {
+        dataUrl: buildUrl + "/cbc298f5253964e018bcbce6dfe2f2b6.data",
+        frameworkUrl: buildUrl + "/b17954b424d97aa65ed85bddcb04a735.js",
+        codeUrl: buildUrl + "/03e492a5c98b3c71c2526bb48cc5f768.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "3D estate",
+        productName: "Rotasjon Only",
+        productVersion: "1.0",
+      };
+
+      var container = document.querySelector("#container");
+      var canvas = document.querySelector("#canvas");
+      var loadingIndicator = document.querySelector("#loading-indicator");
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Lower canvas resolution on mobile devices to gain some performance.
+        //config.devicePixelRatio = 1;
+
+        //canvas.style.width = window.innerWidth + 'px';
+        //canvas.style.height = window.innerHeight + 'px';
+        //canvas.style.width = window.innerWidth * window.devicePixelRatio;
+        //canvas.style.height = window.innerHeight * window.devicePixelRatio;
+      }
+      loadingIndicator.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          console.log(`Progress: ${progress}`);
+        }).then((unityInstance) => {
+          loadingIndicator.style.display = "none";
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>
